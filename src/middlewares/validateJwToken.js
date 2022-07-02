@@ -1,1 +1,6 @@
-import { mongoDB } from "../database/mongoDB";
+
+const validateJwToken = () => {
+    return;
+}
+
+export default validateJwToken;

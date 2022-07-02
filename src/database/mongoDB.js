@@ -1,12 +1,15 @@
 import { MongoClient } from 'mongodb';
-import * as dotenv from 'dotenv';
+import dotenv from 'dotenv';
 dotenv.config();
 
 let mongoDB = null;
-const client = new MongoClient(process.env.MONGO_URL)
-client.connect()
-    .then(() => mongoDB = client.db(process.env.MONGO_DB))
-    .catch(err => console.error(err));
-    
-export { mongoDB }
+const client = new MongoClient(process.env.MONGO_URL);
+try {
+    await client.connect();
+    mongoDB = client.db(process.env.MONGO_DB);
+    console.log('Connected to MongoDB!')
+} catch (err) {
+    console.log('Ocurred an error to connect to MongoDB!', err);
+}
+export default mongoDB
 
