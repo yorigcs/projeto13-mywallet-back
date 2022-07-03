@@ -1,5 +1,5 @@
-import mongoDB from "../database/mongoDB.js";
-import { schemaSingUp } from "../schema/schema.js";
+import mongoDB from "../../database/mongoDB.js";
+import { schemaSingUp } from "../../schema/schema.js";
 const validateSignUpData = async (req, res, next) => {
     const { name, email, password, confirmPw } = req.body;
 

@@ -1,6 +1,6 @@
 import bcrypt from "bcrypt";
-import mongoDB from "../database/mongoDB.js";
-import { schemaSingIn } from "../schema/schema.js";
+import mongoDB from "../../database/mongoDB.js";
+import { schemaSingIn } from "../../schema/schema.js";
 
 
 const validateSignInData = async (req, res, next) => {
@@ -13,12 +13,8 @@ const validateSignInData = async (req, res, next) => {
             .collection('users')
             .findOne({ email });
 
-        if (!isRegistered) {
-            return res.status(400).send("Usuário não cadastrado!")
-        }
-
-        if (!bcrypt.compareSync(password, isRegistered.password)) {
-            return res.status(400).send("Usuário ou senha inválidos!")
+        if (!isRegistered || !bcrypt.compareSync(password, isRegistered?.password)) {
+            return res.status(400).send("Usuário não cadastrado ou senha inválida!")
         }
 
         res.locals.userData = { name: isRegistered.name, email };
