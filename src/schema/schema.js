@@ -7,6 +7,11 @@ const schemaSingUp = Joi.object({
     confirmPw: Joi.string().min(3).max(12).required(),
 });
 
-export { schemaSingUp };
+const schemaSingIn = Joi.object({
+    email: Joi.string().email().required(),
+    password: Joi.string().min(3).max(12).required(),
+});
+
+export { schemaSingUp, schemaSingIn };
 
 //type: Joi.any().validate("Input","Output")
