@@ -3,7 +3,7 @@ import dotenv from 'dotenv';
 dotenv.config();
 const SECRET = process.env.SECRET_KEY;
 
-const validadeJwToken = (req, res, next) => {
+const validateJwToken = (req, res, next) => {
     const token = req.header('Authorization')?.replace('Bearer ', '');
     const { user } = req.params;
  
@@ -17,4 +17,4 @@ const validadeJwToken = (req, res, next) => {
         return res.status(400).send("Token inválido!")
     }    
 }
-export default validadeJwToken;
+export default validateJwToken;

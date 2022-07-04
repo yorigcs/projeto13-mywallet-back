@@ -5,7 +5,7 @@ const balanceLogsController = async (req, res, next) => {
         const balanceLogs = await mongoDB
             .collection('registerLogs')
             .find({ user }).toArray();
-        res.send(balanceLogs);
+        res.send(balanceLogs.reverse());
     } catch (err) {
         console.log(err)
         res.status(500).send("Houve um problema para carregar os dados!");

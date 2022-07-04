@@ -5,7 +5,9 @@ import { schemaSingIn } from "../../schema/schema.js";
 
 const validateSignInData = async (req, res, next) => {
     const { email, password } = req.body;
+    console.log(req.body)
     if (schemaSingIn.validate({ email, password }).error) {
+        //console.log(schemaSingIn.validate({ email, password }).error)
         return res.status(422).send("Dados inválidos!")
     }
     try {

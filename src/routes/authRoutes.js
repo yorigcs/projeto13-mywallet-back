@@ -11,6 +11,6 @@ import { Router } from 'express';
 const router = Router();
 
 router.post('/signUp',validateSignUpData, signUpController);
-router.get('/signIn',validateSignInData,createJwToken,signInController);
+router.post('/signIn',validateSignInData,createJwToken,signInController);
 
 export default router;

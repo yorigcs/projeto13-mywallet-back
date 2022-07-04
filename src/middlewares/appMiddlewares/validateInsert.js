@@ -2,14 +2,15 @@ import { schemaInsertValue } from "../../schema/schema.js";
 
 const validateInsert = (req, res, next) => {
     const { user } = req.params;
-    const { value, type, date} = req.body;
+    const { value, type, date, description } = req.body;
     console.log(user, type, value)
     const isValidInsert = schemaInsertValue.validate(
         {
             user,
             value,
             type,
-            date
+            date,
+            description
         }
     );
     if (isValidInsert.error) {
@@ -17,7 +18,7 @@ const validateInsert = (req, res, next) => {
         return res.status(422).send("Dados inválidos!")
     }
 
-    res.locals.insertData = { user, value, type, date };
+    res.locals.insertData = { user, value, type, date, description };
     next();
 }
 

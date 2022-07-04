@@ -1,11 +1,11 @@
 import { Router } from "express";
 import balanceLogsController from "../controllers/appControllers/balanceLogsController.js";
 import insertNewValue from "../controllers/appControllers/insertNewValue.js";
-import validadeJwToken from "../middlewares/appMiddlewares/validadeJwToken.js";
+import validateJwToken from "../middlewares/appMiddlewares/validateJwToken.js";
 import validateInsert from "../middlewares/appMiddlewares/validateInsert.js";
 
 const router = Router();
-router.get('/balanceLogs/:user', validadeJwToken, balanceLogsController)
-router.post('/newRegister/:user',validadeJwToken, validateInsert, insertNewValue)
+router.get('/balanceLogs/:user', validateJwToken, balanceLogsController)
+router.post('/newRegister/:user',validateJwToken, validateInsert, insertNewValue)
 
 export default router;

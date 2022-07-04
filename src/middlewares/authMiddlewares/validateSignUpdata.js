@@ -10,7 +10,6 @@ const validateSignUpData = async (req, res, next) => {
 
     try {
         const isUserRegistered= await mongoDB.collection('users').findOne({ email });
-        console.log(isUserRegistered)
         if(isUserRegistered) {
             return res.status(400).send('Este email já está cadastrado!');
         }

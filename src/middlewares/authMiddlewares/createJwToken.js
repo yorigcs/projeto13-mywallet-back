@@ -8,7 +8,7 @@ const createJwToken = (req, res, next) => {
 
     const userData = res.locals.userData;
     const token = jwt.sign(userData, SECRET);
-    res.locals.data = { data: userData, token };
+    res.locals.data = { user: userData, token };
     next();
 }
 export default createJwToken;
