@@ -10,7 +10,7 @@ const signUpController = async (req, res) => {
                name,
                email,
                password: encryptedPassword(password),
-               Balance: 0
+               //Balance: 0
             }
          );
       res.status(201).send("Usuário criado com sucesso!")

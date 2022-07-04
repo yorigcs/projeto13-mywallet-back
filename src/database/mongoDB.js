@@ -1,9 +1,8 @@
 import { MongoClient } from 'mongodb';
 import dotenv from 'dotenv';
 dotenv.config();
-
 let mongoDB = null;
-const client = new MongoClient(process.env.MONGO_URL);
+const client = new MongoClient(process.env.MONGO_URI);
 try {
     await client.connect();
     mongoDB = client.db(process.env.MONGO_DB);
